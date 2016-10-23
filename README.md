@@ -1,4 +1,4 @@
-# JSScripts
+# Pluralsight TranscriptToSRT
 Just insert into the console, press enter and call
 ```javascript
 downloadSubs()
