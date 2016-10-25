@@ -44,8 +44,13 @@ function subtitleAsSRT(o) {
 		function time(ms) {
 			return new Date(ms).toISOString().slice(11, -1).replace('.',',');
 		}
-		var nextIndex = i + 1 == o.length ? o.length - 1 : i + 1;
-		return (i + 1) + "\r\n" + time(sub.displayTimeOffset* 1000) + " --> " + time(o[nextIndex].displayTimeOffset * 1000) + "\r\n" + sub.text;
+		var lastSub = i + 1 == o.length;
+		var nextIndex = lastSub ? o.length - 1 : i + 1;
+		return (i + 1) + "\r\n" 
+			+ time(sub.displayTimeOffset* 1000) 
+			+ " --> " 
+			+ time(o[nextIndex].displayTimeOffset * 1000 + (lastSub?(1000*120):0)) 
+			+ "\r\n" + sub.text;
 	}).join("\r\n\r\n");
 };
 
